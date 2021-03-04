@@ -12,6 +12,8 @@ namespace Assignment5
 
         public ItemGroup Group { get; set; }
 
+        public Item(){}
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -27,8 +29,9 @@ namespace Assignment5
 
         public override string ToString()
         {
+            string returnable = Name + ": " + Amount + " Type: " + Group.ToString();
             // TODO: display the output like this Axe
-            return base.ToString();
+            return returnable;
         }
     }
 }
