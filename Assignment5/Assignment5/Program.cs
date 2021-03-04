@@ -9,6 +9,15 @@ namespace Assignment5
         {
             Console.WriteLine("Welcome to the Adventure of Assignment 5!");
 
+            Inventory MyInventory = new Inventory(2);
+            MyInventory.AddItem(new Item("fork", 1, ItemGroup.Key));
+            MyInventory.AddItem(new Item("Death Killer 10000000", 1, ItemGroup.Equipment));
+            List<Item> AllItems = MyInventory.ListAllItems();
+            foreach (Item iteminlist in AllItems)
+            {
+                Console.WriteLine(iteminlist.ToString());
+            }
+
             Character hero = new Character("Bob", RaceCategory.Human, 100);
 
             Console.WriteLine("{0} has entered the forest", hero.Name);
