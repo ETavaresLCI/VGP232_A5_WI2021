@@ -55,7 +55,7 @@ namespace Assignment5
         /// <returns>True if you find the item, and false if it does not exist.</returns>
         public bool TakeItem(string name, out Item found)
         {
-            found = new Item();
+            found = null;
             foreach (var item in items)
 			{
                 if (item.Key.Name == name)

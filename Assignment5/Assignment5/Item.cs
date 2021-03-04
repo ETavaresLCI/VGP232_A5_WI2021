@@ -12,8 +12,6 @@ namespace Assignment5
 
         public ItemGroup Group { get; set; }
 
-        public Item(){}
-
         /// <summary>
         /// Constructor.
         /// </summary>

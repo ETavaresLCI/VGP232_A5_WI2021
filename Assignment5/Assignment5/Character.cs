@@ -43,7 +43,7 @@ namespace Assignment5
         public void TakeDamage(int damage)
         {
             Health -= damage;
-            if (Health < 0)
+            if (Health <= 0)
 			{
                 IsAlive = false;
                 Health = 0;
@@ -60,6 +60,10 @@ namespace Assignment5
             if (Health > MaxHealth)
 			{
                 Health = MaxHealth;
+			}
+            if (Health > 0)
+			{
+                IsAlive = true;
 			}
         }
 
