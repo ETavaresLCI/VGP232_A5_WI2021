@@ -20,7 +20,7 @@ namespace Assignment5
             Console.WriteLine("{0} takes {1} damage", hero.Name, damage);
 
             hero.TakeDamage(damage);
-            Console.WriteLine(hero);
+            Console.WriteLine(hero.ToString());
 
             Console.WriteLine("{0} flees from the enemy", hero.Name);
 
@@ -33,7 +33,7 @@ namespace Assignment5
 
             hero.RestoreHealth(restoreAmount);
 
-            Console.WriteLine(hero);
+            Console.WriteLine(hero.ToString());
 
             if (hero.IsAlive)
             {
