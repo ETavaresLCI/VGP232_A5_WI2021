@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace Assignment5
@@ -21,7 +22,7 @@ namespace Assignment5
         {
             get
             {
-                return MaxSlots;
+                return maxSlots;
             }
         }
 
@@ -33,8 +34,9 @@ namespace Assignment5
         private int maxSlots;
         public Inventory(int slots)
         {
-            availableSlots = maxSlots;
+            items = new Dictionary<Item, int>();
             maxSlots = slots;
+            availableSlots = maxSlots;
         }
 
         /// <summary>
@@ -52,9 +54,30 @@ namespace Assignment5
         /// <param name="name">The item name</param>
         /// <param name="found">The item if found</param>
         /// <returns>True if you find the item, and false if it does not exist.</returns>
-        bool TakeItem(string name, out Item found)
+        public bool TakeItem(string name, out Item found)
         {
-            throw new NotImplementedException();
+            if (items.Count > 0)
+            {
+                foreach (Item itm in items.Keys)
+                {
+                    if(itm.Name == name)
+                    {
+                        if(itm.Amount > 1)
+                        {
+                            itm.Amount--;
+                        }
+                        else
+                        {
+                            availableSlots++;
+                            items.Remove(itm);
+                        }
+                        found = itm;
+                        return true;
+                    }
+                }
+            }
+            found = null;
+            return false;
         }
 
         /// <summary>
@@ -62,22 +85,63 @@ namespace Assignment5
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        bool AddItem(Item item)
+        public bool AddItem(Item item)
         {
-            // Add it in the items dictionary and increment it the number if it already exist
-            // Reduce the slot once it's been added.
-            // returns false if the inventory is full
-            throw new NotImplementedException();
+            // if items dictionary is null add item automaticallly
+            if(items.Count == 0)
+            {
+                items.Add(item, item.Amount);
+                availableSlots--;
+                return true;
+            }
+            else
+            {
+                // Add it in the items dictionary and increment it the number if it already exist
+                foreach (Item itm in items.Keys)
+                {
+                    // if item exist
+                    // no amount max limit
+                    if (itm.Name == item.Name)
+                    {
+                        itm.Amount += item.Amount;
+                        return true;
+                    }
+                    else
+                    {
+                        // Reduce the slot once it's been added.
+                        if (availableSlots > 0)
+                        {
+                            items.Add(item, item.Amount);
+                            availableSlots--;
+                            return true;
+                        }
+                        // returns false if the inventory is full
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+                return false;
+            }
         }
 
         /// <summary>
         /// Iterates through the dictionary and create a list of all the items.
         /// </summary>
         /// <returns></returns>
-        List<Item> ListAllItems()
+        public List<Item> ListAllItems()
         {
             // use a foreach loop to iterate through the key value pairs and duplicate the item base on the quantity.
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            List<Item> listItems = new List<Item>();
+
+            foreach(Item itm in items.Keys)
+            {
+                listItems.Add(itm);
+            }
+
+            return listItems;
         }
     }
 }

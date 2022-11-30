@@ -27,8 +27,9 @@ namespace Assignment5
 
         public override string ToString()
         {
-            // TODO: display the output like this Axe
-            return base.ToString();
+            string item = $"Item: {Name} Amount: {Amount} Group: {Group.ToString()}";
+
+            return item;
         }
     }
 }
