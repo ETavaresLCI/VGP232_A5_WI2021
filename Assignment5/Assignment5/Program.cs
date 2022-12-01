@@ -3,10 +3,10 @@ using System.Xml.Linq;
 
 namespace Assignment5
 {
-    class Program
+    internal class Program
     {
         static Inventory PlayerInventory;
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the Adventure of Assignment 5!");
 
