@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace Assignment5
 {
     [TestFixture]
-    internal class UnitTests
+    internal class InventoryTest
     {
         private Inventory PlayerInventory;
         private int MaxSlots = 5;
