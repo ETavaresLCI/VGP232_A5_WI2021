@@ -42,7 +42,7 @@ namespace Assignment5
         /// <param name="damage">The amount of damage taken</param>
         public void TakeDamage(int damage)
         {
-            Health -= damage;
+            Health = (damage > Health) ? Health=0: Health-damage;
 
             if(Health <= 0)
                 IsAlive= false;
@@ -54,7 +54,7 @@ namespace Assignment5
         /// <param name="amount">The amount of health to recover</param>
         public void RestoreHealth(int amount)
         {
-            Health += amount;
+            Health += (amount > MaxHealth)? MaxHealth: amount;
         }
 
         public override string ToString()

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Assignment5
 {
@@ -26,16 +27,16 @@ namespace Assignment5
         [Test]
         public void TakeDamage()
         {
-            int Damage = 100;
+            int Damage = 120;
             hero.TakeDamage(Damage);
-            Assert.AreEqual(HeroHP - Damage, hero.Health);
+            Assert.AreEqual((Damage > HeroHP) ? 0 : HeroHP - Damage, hero.Health);
             Assert.IsFalse(hero.IsAlive);
         }
 
         [Test]
         public void RestoreHealth()
         {
-            int HPtoAdd = 100;
+            int HPtoAdd = 150;
             hero.RestoreHealth(HPtoAdd);
             Assert.IsTrue(hero.IsAlive);
         }
